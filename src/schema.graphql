@@ -12,6 +12,7 @@ type Student {
   password: String
   collegeId: String
   college: College
+  email: String
 }
 
 type College {
@@ -25,4 +26,13 @@ type College {
 type Mutation {
   createStudent(collegeId: ID, firstName: String, lastName: String): String
   addStudent(firstName: String, lastName: String, collegeId: ID): Student
+  signUp(input: SignUpInput): String
+  deleteStudent(id: ID!): String
+  updateStudent(id: ID!, firstName: String, lastName: String): Student
+}
+
+input SignUpInput {
+  email: String!
+  password: String!
+  firstName: String!
 }
