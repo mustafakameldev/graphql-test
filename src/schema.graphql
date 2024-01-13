@@ -21,3 +21,8 @@ type College {
   rating: Float
   students: [Student]
 }
+
+type Mutation {
+  createStudent(collegeId: ID, firstName: String, lastName: String): String
+  addStudent(firstName: String, lastName: String, collegeId: ID): Student
+}

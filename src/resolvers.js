@@ -22,5 +22,23 @@ const Student = {
     return db.colleges.get(root.collegeId);
   },
 };
+const Mutation = {
+  createStudent: (root, args, context, info) => {
+    return db.students.create({
+      collegeId: args.collegeId ?? '',
+      firstName: args.firstName ?? '',
+      lastName: args.lastName ?? '',
+    });
+  },
+  addStudent: (root, args, context, info) => {
+    const id = db.students.create({
+      collegeId: args.collegeId,
+      firstName: args.firstName,
+      lastName: args.lastName,
+    });
 
-module.exports = { Query, Student };
+    return db.students.get(id);
+  },
+};
+
+module.exports = { Query, Student, Mutation };
