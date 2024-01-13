@@ -5,7 +5,6 @@ const Query = {
   },
   students: () => db.students.list(),
   studentById: (root, args, context, info) => {
-    console.log({ root, args, context, info });
     return db.students.get(args.id);
   },
 };
@@ -17,6 +16,10 @@ const Student = {
   // and add this to the user
   fullName: (root, args, context, info) => {
     return root.firstName + ' ' + root.lastName;
+  },
+  college: (root) => {
+    console.log({ root });
+    return db.colleges.get(root.collegeId);
   },
 };
 

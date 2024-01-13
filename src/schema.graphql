@@ -11,7 +11,7 @@ type Student {
   fullName: String
   password: String
   collegeId: String
-  MKNAME: String
+  college: College
 }
 
 type College {
