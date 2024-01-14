@@ -1,4 +1,4 @@
-const db = require('../db');
+const db = require('./db');
 const Query = {
   greeting: () => {
     return 'hello from  TutorialsPoint !!!';
@@ -31,6 +31,8 @@ const Mutation = {
     });
   },
   addStudent: (root, args, context, info) => {
+    const { collegeId } = args;
+    if (!db.colleges.get(collegeId)) throw new Error('College does not exist');
     const id = db.students.create({
       collegeId: !args.collegeId,
       firstName: !args.firstName,
@@ -68,6 +70,13 @@ const Mutation = {
       lastName: args.lastName ?? '',
     });
     return db.students.get(args.id);
+  },
+  addCollege: (root, args, context, info) => {
+    const id = db.colleges.create({
+      name: args.name ?? '',
+      location: args.location ?? '',
+    });
+    return db.colleges.get(id);
   },
 };
 

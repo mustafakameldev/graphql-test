@@ -29,6 +29,7 @@ type Mutation {
   signUp(input: SignUpInput): String
   deleteStudent(id: ID!): String
   updateStudent(id: ID!, firstName: String, lastName: String): Student
+  addCollege(name: String, location: String): College
 }
 
 input SignUpInput {
